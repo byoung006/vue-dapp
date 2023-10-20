@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -9,11 +10,14 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //
+        $posts =  Posts::all('title', 'body');
+   return response()->json([
+       'posts' => $posts
+   ]);
     }
 
     /**
@@ -21,9 +25,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request  $request)
     {
-        //
+
+            $post = new Posts();
+            $post->title = $request->title;
+            $post->body = $request->body;
+            $post->save();
+
+            return response([
+                'post' => $post
+            ]);
     }
 
     /**

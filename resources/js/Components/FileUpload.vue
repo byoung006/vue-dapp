@@ -149,8 +149,8 @@ export default {
             });
         },
         sendDataToParent() {
-            this.resetFileInput();
             this.$emit("file-uploaded", this.file);
+            this.resetFileInput();
         },
     },
 };
@@ -158,14 +158,15 @@ export default {
 
 <style scoped>
 .file-upload {
-    height: 100vh;
+    height: 60vh;
     width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    padding-top:5%
 }
 .file-upload .file-upload__area {
-    width: 600px;
+    max-width: 80%;
     min-height: 200px;
     display: flex;
     align-items: center;

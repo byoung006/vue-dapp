@@ -6,7 +6,7 @@ export const matic= {
     chainId: 137,
     _defaultProvider: (providers) => new ethers.JsonRpcProvider('https://rpc-mumbai.maticvigil.com'),
 }
-function web3_check_metamask() {
+function web3CheckMetamask() {
     if (!window.ethereum) {
         console.error('It seems that the MetaMask extension is not detected. Please install MetaMask first.');
         alert('It seems that the MetaMask extension is not detected. Please install MetaMask first.');
@@ -17,10 +17,8 @@ function web3_check_metamask() {
     }
 }
 export const web3Login = async () => {
-    let provider;
-    let signer;
-    const chainId =80001;
-if (web3_check_metamask()) {
+
+if (web3CheckMetamask()) {
     // Get the Ethereum provider
     const provider = new ethers.BrowserProvider(window.ethereum);
     // Get Ethereum accounts
